@@ -23,14 +23,14 @@ public:
         else{
             for(int i=0;i<nums.size()-1;i++){
                 if(sum[i]==k)
-                    count++;
+                    count=count+1;
                 for(int j=i+1;j<nums.size();j++){
                     if(sum[j]-sum[i]==k)
-                        count++;
+                        count=count+1;
                 }
             }
             if(sum[nums.size()-1]==k)
-                count++;
+                count=count+1;
         }
         return count;
     }
@@ -52,17 +52,17 @@ using namespace std;
 int findSubarraySum(int arr[], int n, int sum) 
 { 
 	unordered_map<int, int> prevSum; 
-	int res = 0; 
+	int rest = 0; 
 	int currsum = 0; 
 	for (int i = 0; i < n; i++) {  
 		currsum += arr[i]; 
 		if (currsum == sum) 
-			res++;		 
+			rest++;		 
 		if (prevSum.find(currsum - sum) != prevSum.end()) 
-			res += (prevSum[currsum - sum]);
-		prevSum[currsum]++; 
+			rest = rest+(prevSum[currsum - sum]);
+		prevSum[currsum]=prevSum[currsum]+1; 
 	} 
-	return res; 
+	return rest; 
 } 
 
 int main() 
