@@ -18,18 +18,19 @@ public:
             s+=i;
             sum.push_back(s); 
         }
-        if(nums.size()==1 && nums[0]==k)
+	    int ns = nums.size();
+        if(ns==1 && nums[0]==k)
             count=1;
         else{
-            for(int i=0;i<nums.size()-1;i++){
+            for(int i=0;i<ns-1;i++){
                 if(sum[i]==k)
                     count++;
-                for(int j=i+1;j<nums.size();j++){
+                for(int j=i+1;j<ns;j++){
                     if(sum[j]-sum[i]==k)
                         count++;
                 }
             }
-            if(sum[nums.size()-1]==k)
+            if(sum[ns-1]==k)
                 count++;
         }
         return count;
